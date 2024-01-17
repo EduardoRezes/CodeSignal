@@ -5,29 +5,20 @@
  */
 
 function areSimilar(a, b) {
-    var sw = 0;
-    var t;
-    var ar;
-    var br;
-    var ret = true;
-    for (var i = 0; i < a.length; i++) {
-        if(a[i] === b[i])
-            continue;
-        if(sw === 0){
-            sw++;
-            ar = a[i];
-            br = b[i];
-            ret = false;
-        }
-        else {
-            if (ar !== b[i] || br !== a[i])
-                sw++;
-            else {
-                ret = true;
-                sw++;
+    let swapCount = 0;
+    let swapIndices = [];
+
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] !== b[i]) {
+            swapCount++;
+
+            if (swapCount > 2) {
+                return false;
             }
+
+            swapIndices.push(i);
         }
     }
-    
-    return ret && (sw === 0 || sw === 2);       
+
+    return swapCount === 0 || (swapCount === 2 && a[swapIndices[0]] === b[swapIndices[1]] && a[swapIndices[1]] === b[swapIndices[0]]);
 }
