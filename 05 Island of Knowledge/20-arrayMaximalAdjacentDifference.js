@@ -9,5 +9,5 @@ function solution(inputArray) {
             max = Math.abs(inputArray[i] - inputArray[i-1]);
         }
     }
-    return max
+    return max;
 }
