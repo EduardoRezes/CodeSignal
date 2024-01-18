@@ -3,11 +3,5 @@
  */
 
 function solution(inputArray) {
-    var max = Math.abs(inputArray[1] - inputArray[0]);
-    for(var i=2; i < inputArray.length; i++) {
-        if(Math.abs(inputArray[i] - inputArray[i-1]) > max) {
-            max = Math.abs(inputArray[i] - inputArray[i-1]);
-        }
-    }
-    return max;
+    return Math.max(...inputArray.map((num, index) => Math.abs(num - (inputArray[index - 1] || num))));
 }
