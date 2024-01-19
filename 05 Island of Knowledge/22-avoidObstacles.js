@@ -6,10 +6,12 @@
  */
 
 function solution(inputArray) {
-    var max =Math.max(...inputArray);
-    for (var i = 1; i< max; i++) {
-        var divs = inputArray.some(x=>x%i==0)
-        if(!divs) return i;
+    const max = Math.max.apply(null, inputArray);
+
+    for (let i = 1; i <= max + 1; i++) {
+        if (inputArray.every(obstacle => obstacle % i !== 0)) {
+            return i;
+        }
     }
-    return max +1;
+    return max + 1;
 }
