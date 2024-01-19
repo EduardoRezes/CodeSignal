@@ -7,6 +7,6 @@
  */
 
 function solution(inputString) {
-    var arr = inputString.split('.');
-    return arr.length === 4 && arr.reduce((acc,el) => acc && /^\d{1,3}$/.test(el) && Number(el) < 256 ,true);
+    return inputString.split('.').length === 4 &&
+       inputString.split('.').every(segment => /^(0|[1-9]\d{0,2})$/.test(segment) && Number(segment) < 256);
 }
