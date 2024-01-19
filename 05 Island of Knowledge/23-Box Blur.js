@@ -11,15 +11,23 @@
  * */
 
 function solution(image) {
-    var im2 = image.slice().map(l=>l.slice());
-    for (var i = 1; i < image.length - 1; i++) {
-        for (var j = 1; j < image[0].length - 1; j++) {
-            var sum = image.slice(i-1,i+2).reduce((acc,l)=>acc + l.slice(j-1,j+2).reduce((a,b)=>a+b),0);
-            im2[i][j] = Math.floor(sum/9);
+    const result = [];
+
+    for (let i = 1; i < image.length - 1; i++) {
+        const row = [];
+
+        for (let j = 1; j < image[0].length - 1; j++) {
+            let sum = 0;
+
+            for (let k = i - 1; k <= i + 1; k++) {
+                for (let l = j - 1; l <= j + 1; l++) {
+                    sum += image[k][l];
+                }
+            }
+            row.push(Math.floor(sum / 9));
         }
+        result.push(row);
     }
-    im2.pop();
-    im2.shift();
-    im2.forEach(l=>{l.pop(); l.shift()})
-    return im2;
+    return result;
 }
+/**Refactored the code, removing unnecessary copies, removing excessive splice usage and avoiding the use of multiple reduce calls. */
