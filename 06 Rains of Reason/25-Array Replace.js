@@ -3,5 +3,5 @@
  */
 
 function solution(inputArray, elemToReplace, substitutionElem) {
-    return inputArray.join(',').replace(new RegExp(elemToReplace, 'g'), substitutionElem).split(',').map(Number);
+    return inputArray.map(element => (element === elemToReplace) ? substitutionElem : element);
 }
