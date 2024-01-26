@@ -6,6 +6,7 @@
  */
 
 function solution(cell1, cell2) {
-    return cell1.split('').reduce((a,b)=>Math.abs(a.charCodeAt(0) - 'A'.charCodeAt(0) + 1 - b)%2)  === cell2.split('').reduce((a,b)=> 
-    Math.abs(a.charCodeAt(0) - 'A'.charCodeAt(0) + 1 - b)%2)
+    const isEven = (cell) => (cell.charCodeAt(0) - 'A'.charCodeAt(0) + parseInt(cell[1])) % 2 === 0;
+
+    return isEven(cell1) === isEven(cell2);
 }
