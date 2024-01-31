@@ -6,5 +6,10 @@
  */
 
 function solution(inputArray, k) {
-    return inputArray.filter((el,i) => (i+1)%k!==0);
+    /**
+     * usamos _ como um espaço reservado para o parâmetro que não estamos usando, indicando que estamos 
+     * cientes do valor, mas não o usaremos. Isso é uma convenção em JavaScript quando você não precisa do 
+     * valor de um parâmetro em uma função de retorno de chamada.
+     */
+    return inputArray.filter((_, i) => (i + 1) % k !== 0);
 }
